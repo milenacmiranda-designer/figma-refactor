@@ -1,0 +1,8 @@
+tests:
+  - name: visual_regression
+    expected:
+      missing_elements: 0
+      deformed_icons: 0
+      clipped_text: 0
+      unexpected_color_changes: 0
+      unexpected_typography_changes: 0

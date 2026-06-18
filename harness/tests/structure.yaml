@@ -1,0 +1,7 @@
+tests:
+  - name: screen_matrix
+    expected:
+      overlapping_frames: 0
+      unnamed_sections: 0
+      generic_frame_names: 0
+      old_versions_outside_archive: 0

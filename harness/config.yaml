@@ -1,0 +1,70 @@
+project:
+  name: figma-refactor
+  type: figma_refactor
+  version: 2.0
+
+execution:
+  default_mode: read_only
+  require_plan_before_write: true
+  require_backup_before_write: true
+  require_visual_validation: true
+  require_logs: true
+  require_qa: true
+
+limits:
+  max_pages_per_run: 1
+  max_sections_per_run: 2
+  max_components_per_run: 5
+  max_frames_per_run: 12
+
+scope:
+  edit_outside_scope: false
+  allow_cross_page_changes: false
+  require_node_ids: true
+
+safety:
+  preserve_original: true
+  preserve_text: true
+  preserve_brand_identity: true
+  preserve_prototype_links: true
+  preserve_overrides: true
+  stop_on_critical_failure: true
+
+backup:
+  required: true
+  strategy: duplicate_section
+  archive_page: "07 — Archive"
+  naming_pattern: "{name} — Backup — {date}"
+
+validation:
+  screenshot_before: true
+  screenshot_after: true
+  compare_visual: true
+  allow_canvas_reorganization: true
+  allow_internal_visual_changes: false
+
+forbidden_actions:
+  - edit_outside_selected_scope
+  - delete_original_without_backup
+  - change_copy
+  - change_product_rules
+  - change_brand_identity
+  - detach_instances_without_reason
+  - delete_published_component
+  - create_duplicate_variable
+  - create_duplicate_style
+  - create_component_before_foundations
+  - continue_after_failed_qa
+  - continue_after_critical_failure
+  - overwrite_archive
+  - modify_prototype_links_without_approval
+
+human_approval_required:
+  - delete_component
+  - merge_component_sets
+  - rename_published_component
+  - change_variable_structure
+  - move_frames_between_pages
+  - modify_prototype_connections
+  - archive_current_screen
+  - alter_visual_identity

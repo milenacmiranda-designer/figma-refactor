@@ -1,0 +1,10 @@
+phase: plan
+entry_criteria:
+  - audit_completed
+  - scope_identified
+exit_criteria:
+  - change_plan_exists
+  - affected_nodes_listed
+  - expected_changes_listed
+  - forbidden_changes_listed
+  - rollback_strategy_defined

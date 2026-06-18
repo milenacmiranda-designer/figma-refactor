@@ -1,0 +1,12 @@
+phase: foundations
+entry_criteria:
+  - backup_completed
+  - styles_inventory_exists
+  - variables_inventory_exists
+exit_criteria:
+  - primitive_colors_created
+  - semantic_colors_created
+  - spacing_variables_created
+  - radius_variables_created
+  - text_styles_created
+  - visual_validation_passed

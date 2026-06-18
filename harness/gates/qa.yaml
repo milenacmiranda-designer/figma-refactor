@@ -1,0 +1,9 @@
+phase: qa
+entry_criteria:
+  - components_completed
+  - mode_is_read_only
+exit_criteria:
+  - qa_report_exists
+  - no_critical_failure
+  - regression_check_passed
+  - human_reviewed

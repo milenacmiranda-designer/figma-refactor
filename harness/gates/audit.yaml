@@ -1,0 +1,9 @@
+phase: audit
+entry_criteria:
+  - discovery_completed
+  - mode_is_read_only
+exit_criteria:
+  - audit_report_exists
+  - inventory_exists
+  - risks_documented
+  - no_write_actions

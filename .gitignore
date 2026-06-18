@@ -1,0 +1,25 @@
+# Runtime do harness — preenchido durante execução
+# Os arquivos versionados são templates limpos; cada usuário
+# preenche localmente e isso não deve subir pro repo.
+harness/state.local.yaml
+harness/inventory.local.yaml
+harness/logs/runs/
+harness/reports/runs/
+
+# Sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*.swo
+*~
+
+# Editores
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Backups locais
+*.bak
+*.backup

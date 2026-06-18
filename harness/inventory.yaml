@@ -1,0 +1,24 @@
+# Inventory
+# Preenchido durante a fase de discovery e audit
+
+figma_file:
+  url: null
+  name: null
+  type: null
+  last_modified: null
+
+pages: []
+
+frames: []
+
+components: []
+
+instances: []
+
+variables: []
+
+text_styles: []
+
+color_styles: []
+
+prototype_connections: []

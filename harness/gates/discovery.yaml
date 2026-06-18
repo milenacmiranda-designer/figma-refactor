@@ -1,0 +1,9 @@
+phase: discovery
+entry_criteria:
+  - figma_link_exists
+  - mcp_connected
+exit_criteria:
+  - project_identified
+  - scope_identified
+  - state_created
+  - mode_set_to_read_only

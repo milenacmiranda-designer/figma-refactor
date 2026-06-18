@@ -1,0 +1,54 @@
+project: figma-refactor
+current_phase: discovery
+status: not_started
+mode: read_only
+
+figma_file:
+  url: null
+  type: null
+  confirmed: false
+
+current_scope:
+  type: null
+  page: null
+  section: null
+  frame: null
+  node_ids: []
+
+completed_phases: []
+
+pending_phases:
+  - discovery
+  - audit
+  - plan
+  - backup
+  - foundations
+  - organization
+  - auto_layout
+  - components
+  - qa
+  - approval
+
+active_agent: null
+last_action: null
+last_updated: null
+
+reports:
+  audit: null
+  plan: null
+  refactor: null
+  qa: null
+
+backup:
+  created: false
+  node_ids: []
+  archive_location: null
+
+failures:
+  critical: []
+  medium: []
+  minor: []
+
+approval:
+  human_required: false
+  status: pending

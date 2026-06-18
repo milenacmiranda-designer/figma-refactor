@@ -1,0 +1,6 @@
+tests:
+  - name: heading_consistency
+    expected:
+      duplicate_text_styles: 0
+      unmanaged_headings: 0
+      visual_hierarchy_exists: true

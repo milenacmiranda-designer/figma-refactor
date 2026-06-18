@@ -1,0 +1,90 @@
+workflow:
+  discovery:
+    agent: null
+    next: audit
+    requires:
+      - figma_link_exists
+      - scope_identified
+      - mcp_connected
+      - state_initialized
+
+  audit:
+    agent: figma-auditor
+    next: plan
+    requires:
+      - audit_report_exists
+      - inventory_created
+      - risks_documented
+      - no_write_actions
+
+  plan:
+    agent: null
+    next: backup
+    requires:
+      - change_plan_exists
+      - scope_locked
+      - affected_nodes_listed
+      - forbidden_changes_listed
+
+  backup:
+    agent: null
+    next: foundations
+    requires:
+      - backup_created
+      - archive_location_registered
+      - original_preserved
+
+  foundations:
+    agent: figma-foundations
+    next: organization
+    requires:
+      - existing_styles_checked
+      - existing_variables_checked
+      - mapping_created
+      - visual_validation_passed
+
+  organization:
+    agent: figma-file-organizer
+    next: auto_layout
+    requires:
+      - pages_organized
+      - sections_created
+      - frames_aligned
+      - archive_updated
+      - visual_validation_passed
+
+  auto_layout:
+    agent: figma-system-builder
+    next: components
+    requires:
+      - structural_groups_removed
+      - spacing_layers_removed
+      - hug_fill_fixed_reviewed
+      - responsive_behavior_checked
+      - visual_validation_passed
+
+  components:
+    agent: figma-system-builder
+    next: qa
+    requires:
+      - component_candidates_reviewed
+      - duplicate_components_checked
+      - variants_reviewed
+      - overrides_preserved
+      - visual_validation_passed
+
+  qa:
+    agent: figma-qa
+    next: approval
+    requires:
+      - qa_report_exists
+      - no_critical_failure
+      - regression_check_passed
+
+  approval:
+    agent: null
+    next: done
+    requires:
+      - human_approval_received
+      - reports_complete
+      - state_updated

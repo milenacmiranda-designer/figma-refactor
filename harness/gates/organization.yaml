@@ -1,0 +1,10 @@
+phase: organization
+entry_criteria:
+  - foundations_completed
+  - backup_confirmed
+exit_criteria:
+  - pages_created
+  - frames_renamed
+  - sections_created
+  - archive_updated
+  - visual_validation_passed

@@ -1,0 +1,9 @@
+phase: backup
+entry_criteria:
+  - plan_completed
+  - write_mode_requested
+exit_criteria:
+  - original_preserved
+  - backup_created
+  - backup_nodes_registered
+  - archive_page_confirmed
