@@ -7,15 +7,37 @@
   ([instruções oficiais](https://help.figma.com/hc/en-us/articles/32132100833559))
 - Acesso de edição ao arquivo Figma que será refatorado
 
-## 1. Clone o repositório
+---
+
+## Opção A — instalação recomendada (1 comando)
+
+Funciona em macOS, Linux e Windows:
+
+```bash
+npx skills add milenacmiranda-designer/figma-refactor
+```
+
+A CLI [`skills`](https://github.com/vercel-labs/skills) detecta o Claude Code, baixa a skill direto do GitHub e instala no diretório correto. Use a flag `-g` se quiser instalar globalmente:
+
+```bash
+npx skills add milenacmiranda-designer/figma-refactor -g
+```
+
+Depois, reinicie o Claude Code.
+
+---
+
+## Opção B — instalação manual (git clone)
+
+Use esta opção se preferir clonar o repo e versionar a skill localmente.
+
+### 1. Clone o repositório
 
 ```bash
 git clone https://github.com/milenacmiranda-designer/figma-refactor.git
 ```
 
-## 2. Copie para a pasta de skills do Claude Code
-
-Mova (ou faça symlink de) a pasta `figma-refactor/` para o diretório de skills da sua instalação do Claude Code:
+### 2. Mova para a pasta de skills do Claude Code
 
 **macOS / Linux**
 ```bash
@@ -27,7 +49,7 @@ mv figma-refactor ~/.claude/skills/
 Move-Item figma-refactor $env:USERPROFILE\.claude\skills\
 ```
 
-A estrutura final deve ficar assim:
+A estrutura final deve ficar:
 
 ```
 ~/.claude/skills/figma-refactor/
@@ -40,11 +62,11 @@ A estrutura final deve ficar assim:
 └── harness/
 ```
 
-## 3. Reinicie o Claude Code
+### 3. Reinicie o Claude Code
 
-Feche e abra o Claude Code novamente para que a skill seja carregada.
+---
 
-## 4. Como usar
+## Como usar
 
 No prompt do Claude Code:
 
@@ -62,13 +84,17 @@ A skill ativa automaticamente quando você escreve frases como:
 - "criar um design system nesse arquivo do Figma"
 - "componentizar o Figma"
 
-## 5. Primeiro teste recomendado
+---
+
+## Primeiro teste recomendado
 
 Comece pequeno para entender o fluxo antes de rodar em um arquivo grande:
 
 - Use uma página com **no máximo 6 frames**
 - Execute apenas: `discovery → audit → plan → backup → organization → qa`
 - Deixe `components`, `foundations` e `auto-layout` para um segundo experimento
+
+---
 
 ## Problemas comuns
 

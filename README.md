@@ -68,17 +68,17 @@ Uma fase só começa quando:
 
 ## Instalação
 
-Veja [INSTALL.md](INSTALL.md) para o passo a passo.
-
-Resumo:
+Um comando, em qualquer SO:
 
 ```bash
-git clone https://github.com/milenacmiranda-designer/figma-refactor.git
-mv figma-refactor ~/.claude/skills/
-# reinicie o Claude Code
+npx skills add milenacmiranda-designer/figma-refactor
 ```
 
-**Requisitos:** Claude Code + MCP do Figma ativo.
+Depois é só reiniciar o Claude Code.
+
+**Requisitos:** [Claude Code](https://claude.com/claude-code) + MCP do Figma ativo.
+
+> Prefere instalar manualmente (git clone)? Veja [INSTALL.md](INSTALL.md).
 
 ---
 
