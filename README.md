@@ -73,7 +73,7 @@ Veja [INSTALL.md](INSTALL.md) para o passo a passo.
 Resumo:
 
 ```bash
-git clone https://github.com/SEU-USUARIO/figma-refactor.git
+git clone https://github.com/milenacmiranda-designer/figma-refactor.git
 mv figma-refactor ~/.claude/skills/
 # reinicie o Claude Code
 ```
@@ -137,4 +137,4 @@ figma-refactor/
 
 MIT — veja [LICENSE](LICENSE).
 
-Criado por [Milena Miranda](https://github.com/SEU-USUARIO).
+Criado por [Milena Miranda](https://github.com/milenacmiranda-designer).

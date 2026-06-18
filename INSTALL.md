@@ -10,7 +10,7 @@
 ## 1. Clone o repositório
 
 ```bash
-git clone https://github.com/SEU-USUARIO/figma-refactor.git
+git clone https://github.com/milenacmiranda-designer/figma-refactor.git
 ```
 
 ## 2. Copie para a pasta de skills do Claude Code
