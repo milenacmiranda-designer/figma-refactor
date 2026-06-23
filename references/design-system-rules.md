@@ -78,3 +78,45 @@ Depois de criar, **inspecionar via MCP** e confirmar:
 
 Se a validação falhar, **refazer** — não seguir pra próxima fase com
 "componente" que na verdade é frame.
+
+---
+
+## Regra geral para qualquer componente
+
+A regra abaixo vale pra **todo componente** que o System Builder identificar
+— Button, Input, Card, Toast, Badge, Avatar, Navigation, Empty State,
+Modal, Tooltip, qualquer outro. Não tem regra especial por tipo.
+
+### Mapeamento universal
+
+| O que muda no componente | Como modelar no Figma |
+|---|---|
+| **Estados** (Default, Hover, Focus, Disabled, Filled, Error, Loading, Success, Warning, Info, Active, Inactive…) | **Variant property `State`** — uma variante por estado |
+| **Tipos/famílias** (Primary, Secondary, Tertiary, Destructive, Outlined, Ghost…) | **Variant property `Type`** |
+| **Tamanhos** (Small, Medium, Large, XL…) | **Variant property `Size`** |
+| **Cor de cada estado** (fundo, borda, texto, ícone) | **Variable semântica** consumida pelos fills/strokes da variante (`Action/Primary-Hover`, `Border/Focus`, `Feedback/Error`, `Surface/Disabled`…) |
+| **Spacing/Radius por tamanho** | **Variable de spacing/radius** bindada em padding, gap, corner radius |
+| **Conteúdo textual** (label, título, descrição, mensagem) | **Text property** |
+| **Mostrar/esconder** (ícone, ação, badge, avatar) | **Boolean property** |
+| **Trocar ícone, avatar ou sub-componente** | **Instance swap property** |
+
+### Quais estados existem por componente
+Não inventar — usar só o que o produto realmente precisa. Inventário comum:
+
+- Button → Default, Hover, Focus, Disabled, Loading
+- Input → Default, Focus, Filled, Error, Disabled
+- Card → Default, Hover, Selected, Disabled
+- Toast → Success, Warning, Error, Info (no `Type`, não `State`)
+- Badge → Neutral, Success, Warning, Error (no `Type`)
+- Navigation item → Default, Hover, Active, Disabled
+- Avatar → variações de tamanho + boolean `Show Image`
+- Empty/Error State → variantes por contexto + text/boolean properties
+
+### Regra que NÃO se quebra
+- **Nunca** criar variante só pra trocar texto, ícone ou cor.
+  Texto = text property. Ícone = instance swap. Cor de estado = variable
+  já bindada na variante existente.
+- **Nunca** duplicar component master ("CardLarge", "CardSmall"). Size é
+  variant property no mesmo component set.
+- **Nunca** usar hex literal numa variante de estado. O que muda entre
+  Default e Hover é **qual variable a fill referencia**, não o valor.
