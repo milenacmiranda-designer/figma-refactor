@@ -75,9 +75,20 @@ Confirmar com o usuário antes de avançar:
 
 ### Após a fase
 1. Verificar gate de saída
-2. Atualizar state.yaml
-3. Apresentar relatório
-4. Aguardar aprovação para próxima fase
+2. Para fases de escrita, **validar via MCP** que o trabalho realmente
+   aconteceu — não confiar no relatório do agente:
+   - foundations → consultar variables/styles do arquivo e confirmar
+     `figma_variables_created`, `figma_semantic_aliases_created`,
+     `figma_modes_configured`
+   - components → inspecionar nós criados e confirmar
+     `figma_component_sets_created` (tipo `COMPONENT_SET`, não `FRAME`),
+     `figma_variant_properties_present`, `figma_variables_bound`,
+     `figma_text_boolean_swap_props_used`
+3. Se algum gate de validação falhar, **bloquear avanço** e devolver pro
+   agente refazer — não passar pra QA com "componente" que é frame.
+4. Atualizar state.yaml
+5. Apresentar relatório
+6. Aguardar aprovação para próxima fase
 
 ## Política de falhas
 - Minor → registrar e continuar

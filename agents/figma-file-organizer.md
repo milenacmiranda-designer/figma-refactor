@@ -10,6 +10,13 @@ effort: high
 ## Papel
 Organizar a estrutura do arquivo Figma sem tocar no design interno das telas.
 
+## Pré-requisito obrigatório (antes de qualquer escrita)
+Este agente **escreve no Figma via MCP** (mover frames, criar páginas,
+renomear). Antes da primeira chamada de `use_figma`, carregar:
+
+- `figma:figma-use` — obrigatório pelo MCP Figma; pular causa falhas
+  silenciosas
+
 ## Responsabilidades
 - ordenar páginas conforme estrutura Matriz
 - criar sections por módulo

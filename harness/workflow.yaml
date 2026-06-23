@@ -42,6 +42,10 @@ workflow:
       - existing_variables_checked
       - mapping_created
       - visual_validation_passed
+      # validações reais via MCP — não basta o agente "dizer" que criou
+      - figma_variables_created          # collection Primitives existe e tem >0 variables
+      - figma_semantic_aliases_created   # collection Semantic existe e suas variables são aliases
+      - figma_modes_configured           # quando aplicável (light/dark)
 
   organization:
     agent: figma-file-organizer
@@ -72,6 +76,11 @@ workflow:
       - variants_reviewed
       - overrides_preserved
       - visual_validation_passed
+      # validações reais via MCP — componente master de verdade
+      - figma_component_sets_created     # nó retorna como COMPONENT_SET, não FRAME
+      - figma_variant_properties_present # variant set tem as properties planejadas
+      - figma_variables_bound            # fills/strokes/spacing usam variable IDs, não literais
+      - figma_text_boolean_swap_props_used # conteúdo variável via property, não nova variante
 
   qa:
     agent: figma-qa
