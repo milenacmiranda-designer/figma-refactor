@@ -36,6 +36,37 @@ Nunca edita o Figma diretamente.
 9. Sempre executar QA antes da aprovação final
 10. Sempre apresentar relatório antes de avançar
 
+## Backup e rollback
+
+### Por que `duplicate_section` não funciona para design system
+Variables, component sets, text styles e effect styles vivem na **collection
+do arquivo inteiro** — não numa section ou página. Duplicar uma section
+preserva o visual das telas, mas se algo der errado com as variables ou
+componentes criados, não há como reverter.
+
+### Estratégia correta: export_fig_snapshot
+Antes de qualquer escrita, exportar o arquivo completo como `.fig` via MCP
+e registrar o caminho em `harness/backups/`. Isso captura:
+- todas as páginas e frames
+- variables e collections (com modos e aliases)
+- component sets e variantes
+- text styles e effect styles
+- conexões de protótipo
+
+### Fallback quando export .fig não disponível via MCP
+1. Duplicar **todas as páginas** (não só sections) para "07 — Archive"
+2. Documentar manualmente a lista de variables e component sets existentes
+   como snapshot de texto em `harness/backups/variables-snapshot.md`
+3. Avisar o usuário que o rollback de variables exigirá recriação manual
+
+### Procedimento de rollback em falha crítica
+1. Parar todas as ações imediatamente
+2. Se snapshot .fig existe → restaurar via Figma "Restore version"
+3. Se só existe snapshot de página → restaurar frames das telas; recriar
+   variables e components a partir do snapshot de texto
+4. Criar incident report em `harness/reports/incident-{date}.md`
+5. Nunca continuar sem aprovação explícita após rollback
+
 ## Roteamento de agentes
 - discovery → leitura direta via MCP
 - audit → figma-auditor

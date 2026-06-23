@@ -7,3 +7,8 @@ exit_criteria:
   - backup_created
   - backup_nodes_registered
   - archive_page_confirmed
+  # critérios adicionais para garantir que variables/components estão cobertos
+  - variables_snapshot_exists    # export .fig OU snapshot de texto de todas as variables
+  - components_snapshot_exists   # lista de component sets existentes registrada
+  # rollback_procedure_documented garante que o controller sabe como reverter
+  - rollback_procedure_documented

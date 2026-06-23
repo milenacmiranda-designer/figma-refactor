@@ -32,9 +32,26 @@ safety:
 
 backup:
   required: true
-  strategy: duplicate_section
+  # ESTRATÉGIA: duplicate_section NÃO preserva variables nem components —
+  # eles vivem na collection do arquivo inteiro, não numa section.
+  # Usar export_fig_snapshot para capturar o estado completo do arquivo.
+  strategy: export_fig_snapshot
+  # Fallback quando export .fig não for possível via MCP:
+  fallback_strategy: duplicate_page_with_components
   archive_page: "07 — Archive"
   naming_pattern: "{name} — Backup — {date}"
+  snapshot_location: "harness/backups/"
+  what_is_preserved:
+    - all_pages_and_frames
+    - variables_and_collections
+    - component_sets_and_variants
+    - text_styles_and_effect_styles
+    - prototype_connections
+  what_duplicate_section_misses:
+    - variables               # ficam no arquivo, não na section
+    - component_sets          # idem
+    - text_styles             # idem
+    - effect_styles           # idem
 
 validation:
   screenshot_before: true
