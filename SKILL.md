@@ -45,11 +45,13 @@ Rollback automático se algo der errado
 | Agente | Arquivo | Responsabilidade |
 |--------|---------|-----------------|
 | Harness Controller | agents/figma-harness-controller.md | Controla tudo |
-| Auditor | agents/figma-auditor.md | Lê e analisa |
+| Auditor | agents/figma-auditor.md | Lê e analisa com métricas reais |
 | File Organizer | agents/figma-file-organizer.md | Organiza canvas |
-| Foundations | agents/figma-foundations.md | Cria tokens |
-| System Builder | agents/figma-system-builder.md | Components e Auto Layout |
-| QA | agents/figma-qa.md | Valida resultado |
+| Foundations | agents/figma-foundations.md | Cria tokens/variables |
+| System Builder | agents/figma-system-builder.md | Components, Auto Layout e use-in-screens |
+| QA | agents/figma-qa.md | Valida com score numérico |
+| Dark Mode QA | agents/figma-dark-mode-qa.md | Valida aliases, contraste e regressão por modo |
+| Code Connect | agents/figma-code-connect.md | Mapeia Figma ↔ código (opcional) |
 
 ---
 
@@ -58,8 +60,11 @@ Rollback automático se algo der errado
 ```
 DISCOVERY → AUDIT → PLAN → BACKUP →
 FOUNDATIONS → ORGANIZATION → AUTO_LAYOUT →
-COMPONENTS → USE_IN_SCREENS → QA → PUBLISH → APPROVAL → DONE
+COMPONENTS → USE_IN_SCREENS → QA → PUBLISH → [CODE_CONNECT] → APPROVAL → DONE
 ```
+
+`CODE_CONNECT` é opcional — ativa apenas quando o projeto tem codebase e
+o usuário confirma que quer o mapeamento Figma ↔ código.
 
 Uma fase só começa quando:
 - a anterior estiver concluída

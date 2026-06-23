@@ -1,0 +1,11 @@
+phase: code_connect
+optional: true
+entry_criteria:
+  - publish_completed               # componentes publicados como library
+  - codebase_available              # codebase com componentes identificado
+  - human_approval_to_map           # usuário confirmou que quer o mapeamento
+exit_criteria:
+  - mapping_proposal_approved       # mapeamento Figma↔código aprovado antes de registrar
+  - code_connect_registered         # add_code_connect_map chamado para cada componente aprovado
+  - inspect_verified                # snippet de código aparece no Inspect de cada componente
+  - code_connect_report_exists      # harness/reports/code-connect.md gerado

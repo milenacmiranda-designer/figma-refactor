@@ -84,12 +84,17 @@ Mínimo para aprovação: **100%** — toda semântica precisa ser alias.
 
 ### 7. Dark mode (quando modos configurados)
 
-Para cada componente e tela, validar em modo Dark:
-- nenhum fill com alias faltando para o modo (fica transparente ou herda errado)
-- contraste mínimo mantido no modo escuro
-- sem alias apontando pra primitiva errada no modo dark
+Quando `figma_modes_configured = true`, acionar o agente especializado
+`figma-dark-mode-qa` para a validação completa por modo.
 
-**Score dark mode:** `(layers_ok_em_dark / total_layers_com_fill_variable) × 100`
+O agente executa:
+- aliases sem valor em algum modo (falha crítica — fill fica transparente)
+- contraste mínimo WCAG por par texto/fundo em cada modo
+- regressão visual entre modos (screenshot Light vs Dark)
+- validação variante por variante nos component sets
+
+**Score dark mode:** retornado pelo `figma-dark-mode-qa`, mínimo **95%**
+para o QA geral ser aprovado.
 
 ### 8. Protótipos
 

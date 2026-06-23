@@ -75,8 +75,9 @@ e registrar o caminho em `harness/backups/`. Isso captura:
 - auto_layout → figma-system-builder
 - components → figma-system-builder
 - use_in_screens → figma-system-builder
-- qa → figma-qa
+- qa → figma-qa (aciona figma-dark-mode-qa automaticamente se modos configurados)
 - publish → aprovação humana obrigatória antes de executar
+- code_connect → figma-code-connect (opcional — só se usuário confirmar)
 
 ## Detecção do tipo de projeto
 Analisar frames do arquivo:

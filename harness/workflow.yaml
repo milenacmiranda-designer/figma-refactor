@@ -113,6 +113,18 @@ workflow:
       - publish_log_exists                # registrar o que foi publicado e quando
       - consumer_files_notified           # avisar arquivos consumidores sobre updates (se houver)
 
+  code_connect:
+    agent: figma-code-connect
+    optional: true                      # só executa se usuário confirmar
+    next: approval
+    requires:
+      - publish_completed               # componentes precisam estar publicados
+      - codebase_available              # projeto tem componentes de código identificados
+      - human_approval_to_map           # usuário confirmou que quer o mapeamento
+      - mapping_proposal_approved       # mapeamento Figma↔código aprovado antes de registrar
+      - code_connect_registered         # add_code_connect_map chamado para cada componente
+      - inspect_verified                # snippet aparece corretamente no Inspect
+
   approval:
     agent: null
     next: done
