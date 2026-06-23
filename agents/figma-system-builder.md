@@ -77,6 +77,30 @@ Nunca substituir sem backup confirmado.
 - Properties: Title (text), Description (text),
   Show Action (boolean), Action Label (text)
 
+## Fase use_in_screens — substituir elementos por instâncias
+
+Após os component sets criados e aprovados, esta fase substitui os
+elementos repetidos nas telas por instâncias reais dos masters.
+
+### Fluxo por tela
+1. Screenshot before da tela
+2. Identificar todos os elementos que correspondem a um component set criado
+3. Para cada elemento:
+   - Usar **instance swap** via `use_figma` (não deletar e inserir)
+   - Aplicar a variante correta (State, Type, Size)
+   - Verificar que overrides de texto e ícone foram preservados
+   - Se override sumiu → reverter imediatamente e reportar
+4. Screenshot after da tela
+5. Comparar before/after — se houver diff visual não esperado → parar
+6. Registrar em change-log.md: tela, node ID original, node ID da instância,
+   component set, variante
+7. Aguardar aprovação antes da próxima tela
+
+### O que NÃO fazer
+- Não deletar o elemento original antes de confirmar que o swap funcionou
+- Não aplicar swap em massa sem checagem tela por tela
+- Não continuar se algum override sumir
+
 ## Correção de Auto Layout
 Após componentizar, corrigir tela por tela:
 - Substituir retângulos espaçadores por padding e gap

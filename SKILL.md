@@ -58,7 +58,7 @@ Rollback automático se algo der errado
 ```
 DISCOVERY → AUDIT → PLAN → BACKUP →
 FOUNDATIONS → ORGANIZATION → AUTO_LAYOUT →
-COMPONENTS → QA → APPROVAL → DONE
+COMPONENTS → USE_IN_SCREENS → QA → PUBLISH → APPROVAL → DONE
 ```
 
 Uma fase só começa quando:

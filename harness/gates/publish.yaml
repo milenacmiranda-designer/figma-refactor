@@ -1,0 +1,8 @@
+phase: publish
+entry_criteria:
+  - qa_completed                    # QA passou com todos os scores acima do mínimo
+  - human_approval_to_publish       # aprovação explícita — publish afeta outros arquivos
+exit_criteria:
+  - library_publish_confirmed       # componentes e variables publicados como shared library
+  - publish_log_exists              # harness/reports/publish.md com o que foi publicado
+  - consumer_files_notified         # arquivos que consomem a library foram avisados (se houver)

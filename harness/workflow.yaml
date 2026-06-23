@@ -33,6 +33,9 @@ workflow:
       - backup_created
       - archive_location_registered
       - original_preserved
+      - variables_snapshot_exists    # export .fig OU snapshot de texto de todas as variables
+      - components_snapshot_exists   # lista de component sets existentes registrada
+      - rollback_procedure_documented
 
   foundations:
     agent: figma-foundations
@@ -69,7 +72,7 @@ workflow:
 
   components:
     agent: figma-system-builder
-    next: qa
+    next: use_in_screens
     requires:
       - component_candidates_reviewed
       - duplicate_components_checked
@@ -77,18 +80,38 @@ workflow:
       - overrides_preserved
       - visual_validation_passed
       # validações reais via MCP — componente master de verdade
-      - figma_component_sets_created     # nó retorna como COMPONENT_SET, não FRAME
-      - figma_variant_properties_present # variant set tem as properties planejadas
-      - figma_variables_bound            # fills/strokes/spacing usam variable IDs, não literais
+      - figma_component_sets_created       # nó retorna como COMPONENT_SET, não FRAME
+      - figma_variant_properties_present   # variant set tem as properties planejadas
+      - figma_variables_bound              # fills/strokes/spacing usam variable IDs, não literais
       - figma_text_boolean_swap_props_used # conteúdo variável via property, não nova variante
+
+  use_in_screens:
+    agent: figma-system-builder
+    next: qa
+    requires:
+      - instances_swapped_in_screens       # elementos repetidos nas telas substituídos por instâncias
+      - overrides_preserved_after_swap     # overrides de texto/ícone mantidos após instance swap
+      - no_detached_instances              # nenhuma instância desconectada do master
+      - visual_regression_check_passed     # screenshot antes/depois de cada tela confirma sem diff visual acidental
+      - swap_log_complete                  # change-log registra cada substituição com node ID e tela
 
   qa:
     agent: figma-qa
-    next: approval
+    next: publish
     requires:
       - qa_report_exists
       - no_critical_failure
       - regression_check_passed
+      - scores_above_minimum              # todos os scores do QA report acima do mínimo definido
+
+  publish:
+    agent: null
+    next: approval
+    requires:
+      - human_approval_to_publish         # publicar afeta outros arquivos que consomem a library
+      - library_publish_confirmed         # componentes e variables publicados como library
+      - publish_log_exists                # registrar o que foi publicado e quando
+      - consumer_files_notified           # avisar arquivos consumidores sobre updates (se houver)
 
   approval:
     agent: null

@@ -74,7 +74,9 @@ e registrar o caminho em `harness/backups/`. Isso captura:
 - foundations → figma-foundations
 - auto_layout → figma-system-builder
 - components → figma-system-builder
+- use_in_screens → figma-system-builder
 - qa → figma-qa
+- publish → aprovação humana obrigatória antes de executar
 
 ## Detecção do tipo de projeto
 Analisar frames do arquivo:
@@ -125,6 +127,35 @@ Confirmar com o usuário antes de avançar:
 - Minor → registrar e continuar
 - Medium → parar fase, solicitar revisão
 - Critical → parar tudo, acionar rollback, criar incident report
+
+## Fase use_in_screens — regras especiais
+Esta fase substitui elementos repetidos nas telas por instâncias dos
+component sets criados na fase anterior. É a mais arriscada visualmente.
+
+- Executar **uma tela por vez** — screenshot antes e depois de cada
+- Usar **instance swap** via MCP, não delete + insert manual
+- Verificar overrides (texto, ícone) após cada swap — se sumiram, reverter
+- Se qualquer tela ficar diferente visualmente do original, **parar** e
+  reportar antes de continuar
+- Registrar cada swap em change-log.md com: tela, node ID original,
+  node ID da instância, component set usado, variante aplicada
+
+## Fase publish — regras especiais
+Publicar a library afeta **todos os arquivos** que a consomem. Exige
+aprovação humana explícita antes de executar.
+
+Antes de publicar, confirmar com o usuário:
+1. Quais arquivos consomem esta library (se houver)
+2. Se há mudanças breaking (renomeação de componente publicado, remoção
+   de variante) que podem quebrar instâncias em outros arquivos
+3. Se o momento de publicar é adequado (outros designers podem estar
+   usando agora)
+
+Registrar em `harness/reports/publish.md`:
+- data e hora
+- o que foi publicado (componentes, variables)
+- arquivos consumidores notificados
+- mudanças breaking identificadas
 
 ## Ações que exigem aprovação humana obrigatória
 - deletar componente

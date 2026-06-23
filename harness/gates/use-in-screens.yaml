@@ -1,0 +1,11 @@
+phase: use_in_screens
+entry_criteria:
+  - components_completed            # fase components concluída e aprovada
+  - figma_component_sets_created    # masters existem de fato (validado via MCP)
+  - backup_confirmed                # backup feito antes de tocar nas telas
+exit_criteria:
+  - instances_swapped_in_screens       # elementos repetidos nas telas são instâncias do master
+  - overrides_preserved_after_swap     # texto, ícone e outros overrides mantidos
+  - no_detached_instances              # nenhuma instância desconectada
+  - visual_regression_check_passed     # screenshot antes/depois confirma sem diff acidental
+  - swap_log_complete                  # change-log com cada substituição (node ID + tela)
