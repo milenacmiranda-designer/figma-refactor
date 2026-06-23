@@ -120,3 +120,43 @@ Não inventar — usar só o que o produto realmente precisa. Inventário comum:
   variant property no mesmo component set.
 - **Nunca** usar hex literal numa variante de estado. O que muda entre
   Default e Hover é **qual variable a fill referencia**, não o valor.
+
+---
+
+## Texto — três coisas que se confundem
+
+"Texto" não é uma coisa só. Cada aspecto tem um lugar diferente:
+
+### 1. Conteúdo (o que está escrito)
+→ **Text property** no componente.
+
+Button tem `Label`, Card tem `Title` + `Description`, Toast tem `Message`.
+**Nunca** criar variante "Button/Salvar" e "Button/Cancelar" — isso é
+text property.
+
+### 2. Estilo tipográfico (família, peso, tamanho, line-height)
+→ **Text Style** é o padrão (`Heading/Large`, `Body/Medium`, `Caption`).
+
+Continuar usando text style pra maioria dos casos.
+
+**Quando virar Variable em vez de Style:** apenas se o produto tem
+**modos de tipografia** (ex.: escala mobile vs desktop, tema "compact" vs
+"comfortable"). Figma suporta variables de font family, weight, size e
+line-height — style não tem modos.
+
+### 3. Cor do texto
+→ **Variable semântica** (`Text/Primary`, `Text/Secondary`, `Text/Disabled`,
+`Text/Inverse`), bindada no **fill da camada de texto**.
+
+A cor **não** vai dentro do text style. Vai como fill bindado à variable.
+Assim a mesma `Body/Medium` aparece Primary num card e Disabled num input
+sem precisar criar `Body/Medium-Primary` e `Body/Medium-Disabled`.
+
+### Mapeamento
+
+| Aspecto do texto | Onde mora |
+|---|---|
+| O que está escrito | Text property |
+| Família + peso + tamanho + line-height | Text Style (Variable só se houver modos) |
+| Cor | Variable semântica (`Text/*`), bindada no fill |
+| Estado (texto fica Disabled, Error) | A variante do componente troca a **variable** da cor, não o text style |
