@@ -10,3 +10,7 @@ exit_criteria:
   - radius_variables_created
   - text_styles_created
   - visual_validation_passed
+  # validações via MCP — não basta o agente declarar que criou
+  - figma_variables_created          # collection Primitives existe e tem >0 variables
+  - figma_semantic_aliases_created   # collection Semantic tem aliases das primitivas
+  - figma_modes_configured           # modos Light/Dark configurados quando aplicável

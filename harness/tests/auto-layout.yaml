@@ -1,9 +1,0 @@
-phase: auto_layout
-entry_criteria:
-  - organization_completed
-  - backup_confirmed
-exit_criteria:
-  - spacer_layers_removed
-  - groups_converted
-  - hug_fill_reviewed
-  - visual_validation_passed

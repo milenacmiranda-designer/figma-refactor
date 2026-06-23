@@ -8,3 +8,8 @@ exit_criteria:
   - instances_replaced
   - overrides_preserved
   - visual_validation_passed
+  # validações via MCP — componente master de verdade
+  - figma_component_sets_created       # nó retorna como COMPONENT_SET, não FRAME
+  - figma_variant_properties_present   # variant set tem as properties planejadas
+  - figma_variables_bound              # fills/strokes/spacing usam variable IDs, não literais
+  - figma_text_boolean_swap_props_used # conteúdo variável via property, não nova variante
